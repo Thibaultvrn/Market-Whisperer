@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 import AppShell from "../src/components/layout/AppShell";
+import "katex/dist/katex.min.css";
 import "../styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });

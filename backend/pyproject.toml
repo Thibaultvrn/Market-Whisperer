@@ -1,0 +1,9 @@
+[project]
+name = "market-whisperer-engine"
+version = "1.0.0"
+description = "Deterministic ticker-dependent risk scoring engine"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

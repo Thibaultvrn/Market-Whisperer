@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { ChevronDown, Menu } from "lucide-react";
+import { TIMEZONE_OPTIONS } from "../../lib/timezones";
 import { useAppShellContext } from "./AppShell";
 
 interface TopbarProps {
@@ -7,16 +8,6 @@ interface TopbarProps {
   pageTitle: string;
   onOpenMenu: () => void;
 }
-
-const TIMEZONE_OPTIONS = [
-  "Europe/Stockholm",
-  "Europe/Paris",
-  "Europe/London",
-  "America/New_York",
-  "America/Los_Angeles",
-  "Asia/Tokyo",
-  "Asia/Singapore"
-] as const;
 
 function getOffsetLabel(timeZone: string): string {
   try {
@@ -55,36 +46,18 @@ export default function Topbar({ isFull, pageTitle, onOpenMenu }: TopbarProps) {
     response,
     timezone,
     setTimezone,
-    favoriteTickers,
     selectedTickers,
     setSelectedTickers,
-    simulationEnabled,
-    setSimulationEnabled,
-    premiumEnabled,
-    setPremiumEnabled,
-    runAnalyze,
+    excludedTickers,
+    toggleExcluded,
     isLoading,
     lastUpdatedAt
   } = useAppShellContext();
   const [quickTicker, setQuickTicker] = useState("");
 
-  const selectedSet = useMemo(
-    () => new Set(selectedTickers.map((symbol) => symbol.toUpperCase())),
-    [selectedTickers]
-  );
-
-  const toggleTicker = (symbol: string) => {
-    const normalized = symbol.toUpperCase();
-    if (selectedSet.has(normalized)) {
-      setSelectedTickers(selectedTickers.filter((item) => item !== normalized));
-      return;
-    }
-    setSelectedTickers([...selectedTickers, normalized]);
-  };
-
   const addQuickTicker = () => {
     const normalized = quickTicker.trim().toUpperCase();
-    if (!normalized || selectedSet.has(normalized)) {
+    if (!normalized || selectedTickers.includes(normalized)) {
       setQuickTicker("");
       return;
     }
@@ -108,14 +81,14 @@ export default function Topbar({ isFull, pageTitle, onOpenMenu }: TopbarProps) {
     return (
       <header className="rounded-xl border border-zinc-800/60 bg-zinc-900/30 px-3 py-2.5">
         <div className="flex flex-wrap items-center gap-2">
-        <button
-          type="button"
-          onClick={onOpenMenu}
-          className="rounded-lg border border-zinc-800/70 bg-zinc-900/40 px-2.5 py-2 text-zinc-200 transition-colors hover:bg-zinc-900"
-          aria-label="Open navigation menu"
-        >
-          <Menu size={16} />
-        </button>
+          <button
+            type="button"
+            onClick={onOpenMenu}
+            className="rounded-lg border border-zinc-800/70 bg-zinc-900/40 px-2.5 py-2 text-zinc-200 transition-colors hover:bg-zinc-900"
+            aria-label="Open navigation menu"
+          >
+            <Menu size={16} />
+          </button>
           <div className="mr-2 min-w-[180px]">
             <h1 className="text-[28px] font-semibold tracking-tight text-zinc-100">
               {pageTitle}
@@ -164,17 +137,17 @@ export default function Topbar({ isFull, pageTitle, onOpenMenu }: TopbarProps) {
         </div>
 
         <div className="flex flex-wrap gap-1.5">
-          {favoriteTickers.slice(0, 8).map((symbol) => {
-            const active = selectedSet.has(symbol.toUpperCase());
+          {selectedTickers.map((symbol) => {
+            const excluded = excludedTickers.has(symbol);
             return (
               <button
                 key={symbol}
                 type="button"
-                onClick={() => toggleTicker(symbol)}
-                className={`rounded-full border px-2.5 py-0.5 text-xs transition-colors ${
-                  active
-                    ? "border-zinc-700 bg-zinc-800 text-zinc-100"
-                    : "border-zinc-800 text-zinc-400 hover:bg-zinc-900"
+                onClick={() => toggleExcluded(symbol)}
+                className={`rounded-full border px-2.5 py-0.5 text-xs font-medium transition-all ${
+                  excluded
+                    ? "border-zinc-800 bg-zinc-900/30 text-zinc-600 line-through opacity-60 hover:opacity-80"
+                    : "border-cyan-500/50 bg-cyan-500/15 text-cyan-300"
                 }`}
               >
                 {symbol}
@@ -213,41 +186,12 @@ export default function Topbar({ isFull, pageTitle, onOpenMenu }: TopbarProps) {
             className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-zinc-500"
           />
         </div>
-        <button
-          type="button"
-          onClick={() => void runAnalyze()}
-          disabled={isLoading}
-          className="h-9 rounded-lg bg-cyan-500 px-3.5 text-sm font-semibold text-zinc-950 transition-colors hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-cyan-800"
-        >
-          {isLoading ? "Analyzing..." : "Run Analyze"}
-        </button>
-
         <div className="ml-auto flex items-center gap-2">
-          {response && lastUpdatedLabel ? (
+          {isLoading ? (
+            <span className="text-xs text-cyan-400">Analyzing...</span>
+          ) : response && lastUpdatedLabel ? (
             <span className="text-xs text-zinc-400">Last updated: {lastUpdatedLabel}</span>
           ) : null}
-          <button
-            type="button"
-            onClick={() => setSimulationEnabled(!simulationEnabled)}
-            className={`rounded-full border px-2 py-0.5 text-[12px] transition-colors ${
-              simulationEnabled
-                ? "border-zinc-700 bg-zinc-800 text-zinc-200"
-                : "border-zinc-800 text-zinc-400 hover:bg-zinc-900"
-            }`}
-          >
-            Simulation
-          </button>
-          <button
-            type="button"
-            onClick={() => setPremiumEnabled(!premiumEnabled)}
-            className={`rounded-full border px-2 py-0.5 text-[12px] transition-colors ${
-              premiumEnabled
-                ? "border-zinc-700 bg-zinc-800 text-zinc-200"
-                : "border-zinc-800 text-zinc-400 hover:bg-zinc-900"
-            }`}
-          >
-            Premium
-          </button>
         </div>
       </div>
     </header>

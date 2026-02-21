@@ -1,0 +1,72 @@
+{
+  "portfolio": ["AAPL", "TSLA", "NVDA"],
+  "timezone": "Europe/Stockholm",
+  "portfolio_risk_score": 0.91,
+  "portfolio_risk_level": "high",
+  "stocks": [
+    {
+      "symbol": "AAPL",
+      "sector": "Technology",
+      "total_risk_score": 0.91,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on AAPL. Confidence driven by source reliability."
+        },
+        {
+          "title": "Escalating tensions in Taiwan Strait",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.38,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "Escalating tensions in Taiwan Strait impacts risk_aversion, creating negative pressure on AAPL. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "TSLA",
+      "sector": "Consumer Discretionary",
+      "total_risk_score": 0.58,
+      "total_risk_level": "medium",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.53,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on TSLA. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "NVDA",
+      "sector": "Technology",
+      "total_risk_score": 0.91,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on NVDA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Escalating tensions in Taiwan Strait",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.38,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "Escalating tensions in Taiwan Strait impacts risk_aversion, creating negative pressure on NVDA. Confidence driven by source reliability."
+        }
+      ]
+    }
+  ]
+}

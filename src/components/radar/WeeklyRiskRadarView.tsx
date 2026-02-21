@@ -1,91 +1,197 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { useAppShellContext } from "../layout/AppShell";
+import type { RiskLevel, StockAnalysis } from "../../lib/types";
 
-interface DerivedTickerStat {
-  symbol: string;
-  score: number;
-  high: number;
-  medium: number;
-  low: number;
+const levelBadge: Record<RiskLevel, string> = {
+  high: "border-red-500/40 bg-red-500/15 text-red-300",
+  medium: "border-amber-500/40 bg-amber-500/15 text-amber-300",
+  low: "border-green-500/40 bg-green-500/15 text-green-300"
+};
+
+const barColor: Record<RiskLevel, string> = {
+  high: "bg-red-500",
+  medium: "bg-amber-500",
+  low: "bg-green-500"
+};
+
+const levelText: Record<RiskLevel, string> = {
+  high: "text-red-300",
+  medium: "text-amber-300",
+  low: "text-green-300"
+};
+
+interface RankedStock extends StockAnalysis {
+  rank: number;
 }
 
 export default function WeeklyRiskRadarView() {
-  const { response } = useAppShellContext();
-  const futureEvents = response?.overnight_events ?? [];
+  const { response, isLoading } = useAppShellContext();
+  const [expandedSymbol, setExpandedSymbol] = useState<string | null>(null);
 
-  const derived = useMemo<DerivedTickerStat[]>(() => {
-    if (futureEvents.length === 0) {
-      return [];
-    }
+  const ranked = useMemo<RankedStock[]>(() => {
+    if (!response) return [];
 
-    const bySymbol = new Map<string, DerivedTickerStat>();
-    for (const event of futureEvents) {
-      const weight =
-        event.impact_level === "high" ? 3 : event.impact_level === "medium" ? 2 : 1;
+    const filtered = response.stocks.filter((s) => s.total_risk_score > 0.5);
 
-      for (const ticker of event.affected_tickers) {
-        const current = bySymbol.get(ticker.symbol) ?? {
-          symbol: ticker.symbol,
-          score: 0,
-          high: 0,
-          medium: 0,
-          low: 0
-        };
-        current.score += weight;
-        if (event.impact_level === "high") {
-          current.high += 1;
-        } else if (event.impact_level === "medium") {
-          current.medium += 1;
-        } else {
-          current.low += 1;
-        }
-        bySymbol.set(ticker.symbol, current);
-      }
-    }
+    const all: RankedStock[] = filtered.map((s) => ({
+      ...s,
+      rank: 0
+    }));
 
-    return Array.from(bySymbol.values()).sort((a, b) => b.score - a.score).slice(0, 10);
-  }, [futureEvents]);
+    all.sort((a, b) => b.total_risk_score - a.total_risk_score);
+    all.forEach((s, i) => { s.rank = i + 1; });
+    return all;
+  }, [response]);
+
+  if (!response) {
+    return (
+      <section className="rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-4 text-sm text-zinc-400">
+        {isLoading ? "Analyzing portfolio..." : "No analysis available yet."}
+      </section>
+    );
+  }
 
   return (
     <section className="space-y-3">
-      {!response ? (
-        <article className="rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-4 text-sm text-zinc-400">
-          No analysis available yet.
-        </article>
-      ) : derived.length === 0 ? (
-        <article className="rounded-xl border border-dashed border-zinc-700 bg-zinc-900/40 p-8 text-center">
-          <p className="text-sm font-medium text-zinc-200">Not available yet</p>
-          <p className="mt-1 text-xs text-zinc-500">
-            Not enough high/medium impact catalysts in the current response.
-          </p>
-        </article>
-      ) : (
-        <article className="rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-4">
-          <h3 className="mb-2 text-sm font-semibold text-zinc-200">Top Risk Assets (derived)</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
-              <thead>
-                <tr className="border-b border-zinc-800/70 text-left text-xs text-zinc-400">
-                  <th className="px-2 py-2 font-medium">Symbol</th>
-                  <th className="px-2 py-2 font-medium">High</th>
-                  <th className="px-2 py-2 font-medium">Medium</th>
-                  <th className="px-2 py-2 font-medium">Low</th>
-                </tr>
-              </thead>
-              <tbody>
-                {derived.map((item) => (
-                  <tr key={item.symbol} className="border-b border-zinc-800/50 last:border-b-0">
-                    <td className="px-2 py-2 font-medium text-zinc-100">{item.symbol}</td>
-                    <td className="px-2 py-2 text-red-300">{item.high}</td>
-                    <td className="px-2 py-2 text-amber-300">{item.medium}</td>
-                    <td className="px-2 py-2 text-green-300">{item.low}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </article>
-      )}
+      <article className="rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-4">
+        <div className="mb-3 flex items-baseline justify-between">
+          <h3 className="text-sm font-semibold text-zinc-200">
+            Stocks to Watch — {ranked.length} above 0.50
+          </h3>
+          <span className="text-xs text-zinc-500">
+            {response.stocks.length} stocks analyzed
+          </span>
+        </div>
+
+        <div className="space-y-2">
+          {ranked.map((stock) => {
+            const pct = Math.round(stock.total_risk_score * 100);
+            const colors = barColor[stock.total_risk_level];
+            const badge = levelBadge[stock.total_risk_level];
+            const isOpen = expandedSymbol === stock.symbol;
+
+            return (
+              <div
+                key={stock.symbol}
+                className={`rounded-lg border overflow-hidden ${
+                  stock.total_risk_level === "high"
+                    ? "border-red-500/25 bg-zinc-900/60"
+                    : "border-zinc-800/50 bg-zinc-900/30"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => setExpandedSymbol(isOpen ? null : stock.symbol)}
+                  className="flex w-full items-center gap-3 px-3 py-2.5 text-left transition-colors hover:bg-zinc-800/30"
+                >
+                  <span className="w-6 text-center text-xs font-bold text-zinc-500">
+                    {stock.rank}
+                  </span>
+
+                  <div className="w-[130px] shrink-0">
+                    <p className="text-sm font-bold text-zinc-100">{stock.symbol}</p>
+                    <p className="truncate text-[11px] text-zinc-500" title={stock.sector}>
+                      {stock.sector}
+                    </p>
+                  </div>
+
+                  <div className="flex-1">
+                    <div className="h-2 rounded-full bg-zinc-800">
+                      <div
+                        className={`h-full rounded-full transition-all ${colors}`}
+                        style={{ width: `${pct}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  <span className="w-12 text-right font-mono text-sm font-bold text-zinc-200">
+                    {stock.total_risk_score.toFixed(2)}
+                  </span>
+
+                  <span
+                    className={`w-16 rounded-full border px-2 py-0.5 text-center text-[11px] font-medium uppercase ${badge}`}
+                  >
+                    {stock.total_risk_level}
+                  </span>
+
+                  <span className="w-14 text-right text-xs text-zinc-500">
+                    {stock.events.length} {stock.events.length === 1 ? "event" : "events"}
+                  </span>
+
+                  <ChevronDown
+                    size={14}
+                    className={`shrink-0 text-zinc-500 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {isOpen && stock.events.length > 0 && (
+                  <div className="border-t border-zinc-800/40 divide-y divide-zinc-800/30">
+                    {stock.events.map((event) => {
+                      const evtBadge = levelBadge[event.risk_level];
+                      const evtBar = barColor[event.risk_level];
+                      const evtText = levelText[event.risk_level];
+                      const riskPct = Math.round(event.risk_score * 100);
+                      const confPct = Math.round(event.confidence * 100);
+
+                      return (
+                        <div key={`${stock.symbol}-${event.title}`} className="px-4 py-3">
+                          <div className="mb-1.5 flex items-start justify-between gap-3">
+                            <div className="min-w-0">
+                              <p className="text-sm font-medium text-zinc-200">{event.title}</p>
+                              <p className="text-[11px] uppercase tracking-wide text-zinc-500">
+                                {event.event_type.replaceAll("_", " ")}
+                              </p>
+                            </div>
+                            <span
+                              className={`shrink-0 rounded-full border px-2 py-0.5 text-[11px] font-medium uppercase ${evtBadge}`}
+                            >
+                              {event.risk_level}
+                            </span>
+                          </div>
+
+                          <div className="mb-1 flex items-center gap-3">
+                            <div className="flex-1">
+                              <div className="mb-0.5 flex justify-between text-[11px] text-zinc-400">
+                                <span>Risk</span>
+                                <span className={`font-medium tabular-nums ${evtText}`}>
+                                  {event.risk_score.toFixed(2)}
+                                </span>
+                              </div>
+                              <div className="h-1 rounded-full bg-zinc-800">
+                                <div
+                                  className={`h-full rounded-full ${evtBar}`}
+                                  style={{ width: `${riskPct}%` }}
+                                />
+                              </div>
+                            </div>
+                            <div className="w-20 shrink-0">
+                              <div className="mb-0.5 flex justify-between text-[11px] text-zinc-400">
+                                <span>Conf.</span>
+                                <span className="tabular-nums">{confPct}%</span>
+                              </div>
+                              <div className="h-1 rounded-full bg-zinc-800">
+                                <div
+                                  className="h-full rounded-full bg-zinc-400"
+                                  style={{ width: `${confPct}%` }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          <p className="mt-1.5 text-xs leading-relaxed text-zinc-400">
+                            {event.rationale}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </article>
     </section>
   );
 }

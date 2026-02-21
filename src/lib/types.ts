@@ -1,19 +1,20 @@
-export type ImpactLevel = "high" | "medium" | "low";
-export type Direction = "up" | "down" | "uncertain";
+export type RiskLevel = "high" | "medium" | "low";
 
-export interface AffectedTicker {
-  symbol: string;
-  direction: Direction;
+export interface StockEvent {
+  title: string;
+  event_type: string;
+  risk_score: number;
+  risk_level: RiskLevel;
   confidence: number;
   rationale: string;
 }
 
-export interface FutureEvent {
-  title: string;
-  type: string;
-  impact_level: ImpactLevel;
-  affected_tickers: AffectedTicker[];
-  sources: string[];
+export interface StockAnalysis {
+  symbol: string;
+  sector: string;
+  total_risk_score: number;
+  total_risk_level: RiskLevel;
+  events: StockEvent[];
 }
 
 export interface AnalyzeRequestBody {
@@ -24,7 +25,9 @@ export interface AnalyzeRequestBody {
 export interface AnalyzeResponse {
   portfolio: string[];
   timezone: string;
-  overnight_events: FutureEvent[];
+  portfolio_risk_score: number;
+  portfolio_risk_level: RiskLevel;
+  stocks: StockAnalysis[];
 }
 
 export interface TickerEntry {

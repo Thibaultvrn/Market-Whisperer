@@ -1,73 +1,102 @@
-import { useMemo, useState } from "react";
-import type { FutureEvent } from "../../lib/types";
+import { useMemo } from "react";
 import { useAppShellContext } from "../layout/AppShell";
-import EventModal from "./EventModal";
-import EventTimeline from "./EventTimeline";
-import PortfolioSummary from "./PortfolioSummary";
+import type { RiskLevel, StockAnalysis } from "../../lib/types";
+import StockCard from "./EventCard";
+import PortfolioRiskBanner from "./PortfolioSummary";
+
+function computeSubsetPortfolioRisk(stocks: StockAnalysis[]): {
+  score: number;
+  level: RiskLevel;
+} {
+  const n = stocks.length;
+  if (n === 0) return { score: 0, level: "low" };
+
+  const stockEvents = new Map<string, Set<string>>();
+  for (const stock of stocks) {
+    stockEvents.set(stock.symbol, new Set(stock.events.map((e) => e.title)));
+  }
+
+  const w = 1 / n;
+  let variance = 0;
+
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      let corr: number;
+      if (i === j) {
+        corr = 1;
+      } else {
+        const ei = stockEvents.get(stocks[i].symbol)!;
+        const ej = stockEvents.get(stocks[j].symbol)!;
+        const union = new Set([...ei, ...ej]);
+        if (union.size === 0) {
+          corr = 0;
+        } else {
+          const intersection = [...ei].filter((t) => ej.has(t));
+          corr = intersection.length / union.size;
+        }
+      }
+
+      variance +=
+        w * w * stocks[i].total_risk_score * stocks[j].total_risk_score * corr;
+    }
+  }
+
+  const raw = Math.round(Math.min(Math.sqrt(Math.max(variance, 0)), 1) * 100) / 100;
+  const level: RiskLevel = raw >= 0.6 ? "high" : raw >= 0.25 ? "medium" : "low";
+  return { score: raw, level };
+}
 
 export default function IntelligenceFeed() {
-  const { response, error } = useAppShellContext();
-  const [selectedEvent, setSelectedEvent] = useState<FutureEvent | null>(null);
-  const futureEvents = response?.overnight_events ?? [];
+  const { response, error, isLoading, selectedTickers, excludedTickers } = useAppShellContext();
 
-  const hasBreakingRisk = useMemo(
-    () => futureEvents.some((event) => event.impact_level === "high"),
-    [futureEvents]
+  const activeSet = useMemo(
+    () => new Set(
+      selectedTickers
+        .map((s) => s.toUpperCase())
+        .filter((s) => !excludedTickers.has(s))
+    ),
+    [selectedTickers, excludedTickers]
   );
-  const impactedTickerCounts = useMemo(() => {
-    if (futureEvents.length === 0) {
-      return [];
-    }
-    const counts = new Map<string, number>();
-    for (const event of futureEvents) {
-      for (const ticker of event.affected_tickers) {
-        counts.set(ticker.symbol, (counts.get(ticker.symbol) ?? 0) + 1);
-      }
-    }
-    return Array.from(counts.entries())
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 8);
-  }, [futureEvents]);
+
+  const filteredStocks = useMemo(
+    () => response?.stocks.filter((s) => activeSet.has(s.symbol)) ?? [],
+    [response, activeSet]
+  );
+
+  const portfolioRisk = useMemo(
+    () => computeSubsetPortfolioRisk(filteredStocks),
+    [filteredStocks]
+  );
 
   if (!response) {
     return (
       <section className="rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-4 text-sm text-zinc-400">
-        {error ? error : "No analysis available yet."}
+        {isLoading ? "Analyzing portfolio..." : error ? error : "No analysis available yet."}
       </section>
     );
   }
 
   return (
     <div className="space-y-3">
-      {hasBreakingRisk ? (
-        <div className="rounded-md border border-red-800/70 bg-red-950/40 px-3 py-1.5 text-xs text-red-200">
-          High impact geopolitical risk detected in portfolio
-        </div>
-      ) : null}
+      <PortfolioRiskBanner
+        score={portfolioRisk.score}
+        level={portfolioRisk.level}
+        stockCount={filteredStocks.length}
+      />
 
-      <PortfolioSummary response={response} />
-      <div className="grid gap-3 lg:grid-cols-[1fr_280px]">
-        <EventTimeline events={futureEvents} onOpen={setSelectedEvent} />
-        <aside className="rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-3">
-          <h2 className="mb-2 text-[17px] font-semibold text-zinc-100">Impacted Assets</h2>
-          {impactedTickerCounts.length === 0 ? (
-            <p className="text-sm text-zinc-400">No impacted assets.</p>
-          ) : (
-            <ul className="space-y-1.5">
-              {impactedTickerCounts.map(([symbol, count]) => (
-                <li
-                  key={symbol}
-                  className="flex items-center justify-between rounded-md border border-zinc-800/70 bg-zinc-900/50 px-2.5 py-1.5 text-sm"
-                >
-                  <span className="font-medium text-zinc-200">{symbol}</span>
-                  <span className="text-xs text-zinc-400">{count} catalysts</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </aside>
-      </div>
-      <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
+      {filteredStocks.length === 0 ? (
+        <section className="rounded-xl border border-dashed border-zinc-700 bg-zinc-900/40 p-6 text-center">
+          <p className="text-sm text-zinc-400">
+            No stocks selected. Toggle tickers above to build your portfolio view.
+          </p>
+        </section>
+      ) : (
+        <div className="space-y-3">
+          {filteredStocks.map((stock) => (
+            <StockCard key={stock.symbol} stock={stock} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

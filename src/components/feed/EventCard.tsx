@@ -1,71 +1,114 @@
-import type { Direction, FutureEvent, ImpactLevel } from "../../lib/types";
+import type { RiskLevel, StockAnalysis } from "../../lib/types";
 
-interface EventCardProps {
-  event: FutureEvent;
-  onOpen: (event: FutureEvent) => void;
+interface StockCardProps {
+  stock: StockAnalysis;
 }
 
-const impactClassMap: Record<ImpactLevel, string> = {
-  low: "border-green-500/40 bg-green-500/15 text-green-300",
-  medium: "border-amber-500/40 bg-amber-500/15 text-amber-300",
-  high: "border-red-500/40 bg-red-500/15 text-red-300"
+const levelColors: Record<RiskLevel, { bar: string; badge: string; text: string }> = {
+  high: {
+    bar: "bg-red-500",
+    badge: "border-red-500/40 bg-red-500/15 text-red-300",
+    text: "text-red-300"
+  },
+  medium: {
+    bar: "bg-amber-500",
+    badge: "border-amber-500/40 bg-amber-500/15 text-amber-300",
+    text: "text-amber-300"
+  },
+  low: {
+    bar: "bg-green-500",
+    badge: "border-green-500/40 bg-green-500/15 text-green-300",
+    text: "text-green-300"
+  }
 };
 
-const directionIcon: Record<Direction, string> = {
-  up: "↑",
-  down: "↓",
-  uncertain: "↔"
-};
-
-export default function EventCard({ event, onOpen }: EventCardProps) {
-  const highImpactClass =
-    event.impact_level === "high" ? "ring-1 ring-red-500/30" : "";
-  const topAffectedTickers = event.affected_tickers.slice(0, 3);
-  const averageConfidence = event.affected_tickers.length
-    ? Math.round(
-        (event.affected_tickers.reduce((sum, ticker) => sum + ticker.confidence, 0) /
-          event.affected_tickers.length) *
-          100
-      )
-    : 0;
+export default function StockCard({ stock }: StockCardProps) {
+  const totalColors = levelColors[stock.total_risk_level];
+  const isHighRisk = stock.total_risk_level === "high";
 
   return (
-    <button
-      type="button"
-      onClick={() => onOpen(event)}
-      className={`w-full rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3 text-left transition-colors hover:bg-zinc-900/50 ${highImpactClass}`}
+    <article
+      className={`rounded-xl border bg-zinc-900/30 ${
+        isHighRisk
+          ? "border-red-500/30 ring-1 ring-red-500/20"
+          : "border-zinc-800/60"
+      }`}
     >
-      <div className="mb-1.5 flex items-start justify-between gap-3">
-        <h3 className="text-sm font-semibold text-zinc-100">{event.title}</h3>
-        <span className={`rounded-full border px-2.5 py-1 text-xs ${impactClassMap[event.impact_level]}`}>
-          {event.impact_level}
-        </span>
-      </div>
-
-      <p className="mb-2 text-xs uppercase tracking-wide text-zinc-400">{event.type}</p>
-      <div className="flex flex-wrap gap-2">
-        {topAffectedTickers.map((ticker) => (
-          <span
-            key={`${event.title}-${ticker.symbol}`}
-            className="rounded-full border border-zinc-700/70 bg-zinc-900 px-2 py-0.5 text-xs text-zinc-300"
-          >
-            {ticker.symbol} {directionIcon[ticker.direction]}
+      <div className="flex items-center justify-between gap-3 border-b border-zinc-800/50 px-4 py-3">
+        <div className="flex items-baseline gap-2">
+          <h3 className="text-base font-bold text-zinc-100">{stock.symbol}</h3>
+          <span className="text-xs text-zinc-500">{stock.sector}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className={`text-lg font-bold tabular-nums ${totalColors.text}`}>
+            {stock.total_risk_score.toFixed(2)}
           </span>
-        ))}
+          <span
+            className={`rounded-full border px-2 py-0.5 text-[11px] font-medium uppercase ${totalColors.badge}`}
+          >
+            {stock.total_risk_level}
+          </span>
+        </div>
       </div>
 
-      <div className="mt-2">
-        <div className="mb-1 flex items-center justify-between text-xs text-zinc-400">
-          <span>Avg confidence</span>
-          <span>{averageConfidence}%</span>
-        </div>
-        <div className="h-1.5 rounded-full bg-zinc-800">
-          <div
-            className="h-full rounded-full bg-zinc-300"
-            style={{ width: `${averageConfidence}%` }}
-          />
-        </div>
+      <div className="divide-y divide-zinc-800/40">
+        {stock.events.map((event) => {
+          const evtColors = levelColors[event.risk_level];
+          const riskPct = Math.round(event.risk_score * 100);
+          const confPct = Math.round(event.confidence * 100);
+
+          return (
+            <div key={`${stock.symbol}-${event.title}`} className="px-4 py-3">
+              <div className="mb-1.5 flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-zinc-200">{event.title}</p>
+                  <p className="text-[11px] uppercase tracking-wide text-zinc-500">
+                    {event.event_type.replaceAll("_", " ")}
+                  </p>
+                </div>
+                <span
+                  className={`shrink-0 rounded-full border px-2 py-0.5 text-[11px] font-medium uppercase ${evtColors.badge}`}
+                >
+                  {event.risk_level}
+                </span>
+              </div>
+
+              <div className="mb-1 flex items-center gap-3">
+                <div className="flex-1">
+                  <div className="mb-0.5 flex justify-between text-[11px] text-zinc-400">
+                    <span>Risk</span>
+                    <span className={`font-medium tabular-nums ${evtColors.text}`}>
+                      {event.risk_score.toFixed(2)}
+                    </span>
+                  </div>
+                  <div className="h-1 rounded-full bg-zinc-800">
+                    <div
+                      className={`h-full rounded-full ${evtColors.bar}`}
+                      style={{ width: `${riskPct}%` }}
+                    />
+                  </div>
+                </div>
+                <div className="w-20 shrink-0">
+                  <div className="mb-0.5 flex justify-between text-[11px] text-zinc-400">
+                    <span>Conf.</span>
+                    <span className="tabular-nums">{confPct}%</span>
+                  </div>
+                  <div className="h-1 rounded-full bg-zinc-800">
+                    <div
+                      className="h-full rounded-full bg-zinc-400"
+                      style={{ width: `${confPct}%` }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <p className="mt-1.5 text-xs leading-relaxed text-zinc-400">
+                {event.rationale}
+              </p>
+            </div>
+          );
+        })}
       </div>
-    </button>
+    </article>
   );
 }

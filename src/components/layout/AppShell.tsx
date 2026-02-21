@@ -10,6 +10,7 @@ import {
 } from "react";
 import { useRouter } from "next/router";
 import { analyzePortfolio } from "../../lib/api";
+import { isSupportedTimezone } from "../../lib/timezones";
 import {
   readFavoriteTickers,
   readTimezone,
@@ -31,18 +32,23 @@ interface AppShellContextValue {
   setTimezone: (timezone: string) => void;
   selectedTickers: string[];
   setSelectedTickers: (tickers: string[]) => void;
+  excludedTickers: Set<string>;
+  toggleExcluded: (symbol: string) => void;
   favoriteTickers: string[];
   setFavoriteTickers: (tickers: string[]) => void;
-  simulationEnabled: boolean;
-  setSimulationEnabled: (enabled: boolean) => void;
-  premiumEnabled: boolean;
-  setPremiumEnabled: (enabled: boolean) => void;
-  runAnalyze: () => Promise<void>;
   lastUpdatedAt: Date | null;
 }
 
 const AppShellContext = createContext<AppShellContextValue | undefined>(undefined);
-const DEFAULT_TICKERS = ["AAPL", "TSLA"];
+
+const SELECTED_TICKERS = [
+  "AAPL", "NVDA", "LMT", "KO", "JPM", "XOM", "ASML", "SHEL", "TSM", "TM", "BABA"
+];
+const DEFAULT_TICKERS = [
+  ...SELECTED_TICKERS,
+  "JNJ", "NVO", "GOOGL", "AMT", "NEE", "BHP", "HSBC", "AMZN", "BA"
+];
+
 interface AppShellProps {
   children: ReactNode;
 }
@@ -52,10 +58,9 @@ export default function AppShell({ children }: AppShellProps) {
   const [response, setResponse] = useState<AnalyzeResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [simulationEnabled, setSimulationEnabled] = useState(false);
-  const [premiumEnabled, setPremiumEnabled] = useState(false);
   const [favoriteTickers, setFavoriteTickers] = useState<string[]>(DEFAULT_TICKERS);
-  const [selectedTickers, setSelectedTickers] = useState<string[]>(DEFAULT_TICKERS);
+  const [selectedTickers, setSelectedTickers] = useState<string[]>(SELECTED_TICKERS);
+  const [excludedTickers, setExcludedTickers] = useState<Set<string>>(new Set());
   const [timezone, setTimezone] = useState("Europe/Stockholm");
   const [lastUpdatedAt, setLastUpdatedAt] = useState<Date | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -63,16 +68,17 @@ export default function AppShell({ children }: AppShellProps) {
     null
   );
   const abortRef = useRef<AbortController | null>(null);
+  const requestIdRef = useRef(0);
 
   useEffect(() => {
     const favorites = readFavoriteTickers();
     if (favorites.length > 0) {
       setFavoriteTickers(favorites);
-      setSelectedTickers(favorites.slice(0, 6));
+      setSelectedTickers(favorites.slice(0, 11));
     }
 
     const savedTimezone = readTimezone();
-    if (savedTimezone) {
+    if (savedTimezone && isSupportedTimezone(savedTimezone)) {
       setTimezone(savedTimezone);
     }
   }, []);
@@ -125,7 +131,7 @@ export default function AppShell({ children }: AppShellProps) {
   }, [activeInfoModal]);
 
   const runAnalyze = useCallback(async () => {
-    if (selectedTickers.length === 0) {
+    if (favoriteTickers.length === 0) {
       setError("Select at least one ticker.");
       return;
     }
@@ -135,9 +141,19 @@ export default function AppShell({ children }: AppShellProps) {
     abortRef.current?.abort();
     const controller = new AbortController();
     abortRef.current = controller;
+    const requestId = ++requestIdRef.current;
+    const demoMode =
+      typeof window !== "undefined" &&
+      new URLSearchParams(window.location.search).get("demo") === "1";
 
     try {
-      const next = await analyzePortfolio(selectedTickers, timezone, controller.signal);
+      const next = await analyzePortfolio(favoriteTickers, timezone, {
+        signal: controller.signal,
+        demoMode
+      });
+      if (requestId !== requestIdRef.current) {
+        return;
+      }
       setResponse(next);
       setLastUpdatedAt(new Date());
     } catch (requestError) {
@@ -150,7 +166,26 @@ export default function AppShell({ children }: AppShellProps) {
     } finally {
       setIsLoading(false);
     }
-  }, [selectedTickers, timezone]);
+  }, [favoriteTickers, timezone]);
+
+  useEffect(() => {
+    if (favoriteTickers.length > 0) {
+      void runAnalyze();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [runAnalyze]);
+
+  const toggleExcluded = useCallback((symbol: string) => {
+    setExcludedTickers((prev) => {
+      const next = new Set(prev);
+      if (next.has(symbol)) {
+        next.delete(symbol);
+      } else {
+        next.add(symbol);
+      }
+      return next;
+    });
+  }, []);
 
   const contextValue = useMemo<AppShellContextValue>(
     () => ({
@@ -161,13 +196,10 @@ export default function AppShell({ children }: AppShellProps) {
       setTimezone,
       selectedTickers,
       setSelectedTickers,
+      excludedTickers,
+      toggleExcluded,
       favoriteTickers,
       setFavoriteTickers,
-      simulationEnabled,
-      setSimulationEnabled,
-      premiumEnabled,
-      setPremiumEnabled,
-      runAnalyze,
       lastUpdatedAt
     }),
     [
@@ -176,10 +208,9 @@ export default function AppShell({ children }: AppShellProps) {
       error,
       timezone,
       selectedTickers,
+      excludedTickers,
+      toggleExcluded,
       favoriteTickers,
-      simulationEnabled,
-      premiumEnabled,
-      runAnalyze,
       lastUpdatedAt
     ]
   );
