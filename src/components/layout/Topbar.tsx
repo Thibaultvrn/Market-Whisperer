@@ -6,6 +6,7 @@ import { useAppShellContext } from "./AppShell";
 interface TopbarProps {
   isFull: boolean;
   pageTitle: string;
+  weekLabel?: string | null;
   onOpenMenu: () => void;
 }
 
@@ -41,13 +42,13 @@ function getCityName(timeZone: string): string {
   return city.replaceAll("_", " ");
 }
 
-export default function Topbar({ isFull, pageTitle, onOpenMenu }: TopbarProps) {
+export default function Topbar({ isFull, pageTitle, weekLabel, onOpenMenu }: TopbarProps) {
   const {
     response,
     timezone,
     setTimezone,
-    selectedTickers,
-    setSelectedTickers,
+    favoriteTickers,
+    setFavoriteTickers,
     excludedTickers,
     toggleExcluded,
     isLoading,
@@ -57,11 +58,11 @@ export default function Topbar({ isFull, pageTitle, onOpenMenu }: TopbarProps) {
 
   const addQuickTicker = () => {
     const normalized = quickTicker.trim().toUpperCase();
-    if (!normalized || selectedTickers.includes(normalized)) {
+    if (!normalized || favoriteTickers.includes(normalized)) {
       setQuickTicker("");
       return;
     }
-    setSelectedTickers([...selectedTickers, normalized]);
+    setFavoriteTickers([...favoriteTickers, normalized]);
     setQuickTicker("");
   };
 
@@ -77,77 +78,85 @@ export default function Topbar({ isFull, pageTitle, onOpenMenu }: TopbarProps) {
     []
   );
 
+  const timezoneSelect = (
+    <div className="relative">
+      <select
+        value={timezone}
+        onChange={(event) => setTimezone(event.target.value)}
+        className="h-9 w-56 appearance-none rounded-inner border border-border-subtle bg-elevated px-3 pr-8 text-sm text-t-primary outline-none transition-colors focus:border-accent"
+        aria-label="Timezone selector"
+      >
+        {timezoneDisplayOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+      <ChevronDown
+        size={14}
+        className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-t-tertiary"
+      />
+    </div>
+  );
+
   if (!isFull) {
     return (
-      <header className="rounded-xl border border-zinc-800/60 bg-zinc-900/30 px-3 py-2.5">
-        <div className="flex flex-wrap items-center gap-2">
+      <header className="rounded-card border border-border-subtle bg-surface p-6 shadow-card">
+        <div className="flex flex-wrap items-center gap-3">
           <button
             type="button"
             onClick={onOpenMenu}
-            className="rounded-lg border border-zinc-800/70 bg-zinc-900/40 px-2.5 py-2 text-zinc-200 transition-colors hover:bg-zinc-900"
+            className="rounded-inner border border-border-subtle bg-elevated p-2.5 text-t-secondary transition-colors hover:bg-surface-hover hover:text-t-primary"
             aria-label="Open navigation menu"
           >
             <Menu size={16} />
           </button>
-          <div className="mr-2 min-w-[180px]">
-            <h1 className="text-[28px] font-semibold tracking-tight text-zinc-100">
+          <div className="mr-auto min-w-[180px]">
+            <h1 className="text-2xl font-semibold tracking-tight text-t-primary">
               {pageTitle}
             </h1>
-            <p className="text-xs text-zinc-400">Structured forward-looking risk signals</p>
+            <p className="text-xs text-t-tertiary">
+              {weekLabel ? `Week of ${weekLabel}` : "Structured forward-looking risk signals"}
+            </p>
           </div>
-          <div className="relative ml-auto">
-            <select
-              value={timezone}
-              onChange={(event) => setTimezone(event.target.value)}
-              className="h-9 w-56 appearance-none rounded-lg border border-zinc-800 bg-zinc-900/40 px-2.5 pr-8 text-sm text-zinc-100 outline-none transition-colors focus:border-cyan-500/80"
-              aria-label="Timezone selector"
-            >
-              {timezoneDisplayOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-            <ChevronDown
-              size={14}
-              className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-zinc-500"
-            />
-          </div>
+          {timezoneSelect}
         </div>
       </header>
     );
   }
 
   return (
-    <header className="rounded-xl border border-zinc-800/60 bg-zinc-900/30 px-3 py-2.5">
-      <div className="flex flex-wrap items-center gap-2">
+    <header className="rounded-card border border-border-subtle bg-surface p-6 shadow-card">
+      <div className="flex flex-wrap items-center gap-3">
         <button
           type="button"
           onClick={onOpenMenu}
-          className="rounded-lg border border-zinc-800/70 bg-zinc-900/40 px-2.5 py-2 text-zinc-200 transition-colors hover:bg-zinc-900"
+          className="rounded-inner border border-border-subtle bg-elevated p-2.5 text-t-secondary transition-colors hover:bg-surface-hover hover:text-t-primary"
           aria-label="Open navigation menu"
         >
           <Menu size={16} />
         </button>
         <div className="mr-2 min-w-[180px]">
-          <h1 className="text-[28px] font-semibold tracking-tight text-zinc-100">
+          <h1 className="text-2xl font-semibold tracking-tight text-t-primary">
             {pageTitle}
           </h1>
-          <p className="text-xs text-zinc-400">Structured forward-looking risk signals</p>
+          <p className="text-xs text-t-tertiary">
+            {weekLabel ? `Week of ${weekLabel}` : "Structured forward-looking risk signals"}
+          </p>
         </div>
 
         <div className="flex flex-wrap gap-1.5">
-          {selectedTickers.map((symbol) => {
+          {favoriteTickers.map((symbol) => {
             const excluded = excludedTickers.has(symbol);
             return (
               <button
                 key={symbol}
                 type="button"
                 onClick={() => toggleExcluded(symbol)}
-                className={`rounded-full border px-2.5 py-0.5 text-xs font-medium transition-all ${
+                className={`rounded-inner border px-2.5 py-1 text-xs font-medium transition-all ${
                   excluded
-                    ? "border-zinc-800 bg-zinc-900/30 text-zinc-600 line-through opacity-60 hover:opacity-80"
-                    : "border-cyan-500/50 bg-cyan-500/15 text-cyan-300"
+                    ? "border-border-subtle bg-elevated/50 text-t-tertiary line-through opacity-50 hover:opacity-70"
+                    : "border-accent/40 bg-accent-muted text-accent"
                 }`}
               >
                 {symbol}
@@ -166,31 +175,16 @@ export default function Topbar({ isFull, pageTitle, onOpenMenu }: TopbarProps) {
             }
           }}
           placeholder="Add ticker"
-          className="h-9 w-32 rounded-lg border border-zinc-800/70 bg-zinc-950/80 px-2.5 text-sm text-zinc-100 outline-none transition-colors focus:border-cyan-500/80"
+          className="h-9 w-32 rounded-inner border border-border-subtle bg-base px-3 text-sm text-t-primary outline-none transition-colors focus:border-accent"
         />
-        <div className="relative">
-          <select
-            value={timezone}
-            onChange={(event) => setTimezone(event.target.value)}
-            className="h-9 w-56 appearance-none rounded-lg border border-zinc-800 bg-zinc-900/40 px-2.5 pr-8 text-sm text-zinc-100 outline-none transition-colors focus:border-cyan-500/80"
-            aria-label="Timezone selector"
-          >
-            {timezoneDisplayOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-          <ChevronDown
-            size={14}
-            className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-zinc-500"
-          />
-        </div>
+
+        {timezoneSelect}
+
         <div className="ml-auto flex items-center gap-2">
           {isLoading ? (
-            <span className="text-xs text-cyan-400">Analyzing...</span>
+            <span className="text-xs text-accent">Analyzing...</span>
           ) : response && lastUpdatedLabel ? (
-            <span className="text-xs text-zinc-400">Last updated: {lastUpdatedLabel}</span>
+            <span className="text-xs text-t-tertiary">Updated {lastUpdatedLabel}</span>
           ) : null}
         </div>
       </div>

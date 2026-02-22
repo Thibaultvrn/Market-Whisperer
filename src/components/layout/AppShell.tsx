@@ -18,6 +18,7 @@ import {
   writeTimezone
 } from "../../lib/storage";
 import type { AnalyzeResponse } from "../../lib/types";
+import { formatWeekLabel, getWeekKey } from "../../lib/weekUtils";
 import ContentContainer from "./ContentContainer";
 import LegalNoticesModal from "./LegalNoticesModal";
 import MethodologyModal from "./MethodologyModal";
@@ -37,6 +38,9 @@ interface AppShellContextValue {
   favoriteTickers: string[];
   setFavoriteTickers: (tickers: string[]) => void;
   lastUpdatedAt: Date | null;
+  weekKeys: string[];
+  selectedWeekIndex: number;
+  setSelectedWeekIndex: (index: number | ((prev: number) => number)) => void;
 }
 
 const AppShellContext = createContext<AppShellContextValue | undefined>(undefined);
@@ -63,6 +67,7 @@ export default function AppShell({ children }: AppShellProps) {
   const [excludedTickers, setExcludedTickers] = useState<Set<string>>(new Set());
   const [timezone, setTimezone] = useState("Europe/Stockholm");
   const [lastUpdatedAt, setLastUpdatedAt] = useState<Date | null>(null);
+  const [selectedWeekIndex, setSelectedWeekIndex] = useState(0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeInfoModal, setActiveInfoModal] = useState<"legal" | "methodology" | null>(
     null
@@ -74,7 +79,7 @@ export default function AppShell({ children }: AppShellProps) {
     const favorites = readFavoriteTickers();
     if (favorites.length > 0) {
       setFavoriteTickers(favorites);
-      setSelectedTickers(favorites.slice(0, 11));
+      setSelectedTickers(favorites);
     }
 
     const savedTimezone = readTimezone();
@@ -142,9 +147,10 @@ export default function AppShell({ children }: AppShellProps) {
     const controller = new AbortController();
     abortRef.current = controller;
     const requestId = ++requestIdRef.current;
-    const demoMode =
-      typeof window !== "undefined" &&
-      new URLSearchParams(window.location.search).get("demo") === "1";
+    const demoParam = typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("demo")
+      : null;
+    const demoMode = demoParam === "1";
 
     try {
       const next = await analyzePortfolio(favoriteTickers, timezone, {
@@ -187,6 +193,22 @@ export default function AppShell({ children }: AppShellProps) {
     });
   }, []);
 
+  const weekKeys = useMemo(() => {
+    if (!response) return [];
+    const keys = new Set<string>();
+    for (const stock of response.stocks) {
+      for (const event of stock.events) {
+        if (event.expected_date) keys.add(getWeekKey(event.expected_date));
+      }
+    }
+    return Array.from(keys).sort();
+  }, [response]);
+
+  useEffect(() => {
+    if (weekKeys.length === 0) return;
+    setSelectedWeekIndex((i) => Math.min(i, weekKeys.length - 1));
+  }, [weekKeys]);
+
   const contextValue = useMemo<AppShellContextValue>(
     () => ({
       response,
@@ -200,7 +222,10 @@ export default function AppShell({ children }: AppShellProps) {
       toggleExcluded,
       favoriteTickers,
       setFavoriteTickers,
-      lastUpdatedAt
+      lastUpdatedAt,
+      weekKeys,
+      selectedWeekIndex,
+      setSelectedWeekIndex
     }),
     [
       response,
@@ -211,13 +236,15 @@ export default function AppShell({ children }: AppShellProps) {
       excludedTickers,
       toggleExcluded,
       favoriteTickers,
-      lastUpdatedAt
+      lastUpdatedAt,
+      weekKeys,
+      selectedWeekIndex
     ]
   );
 
   return (
     <AppShellContext.Provider value={contextValue}>
-      <div className="min-h-screen bg-gradient-to-b from-zinc-950 via-zinc-950 to-zinc-900 text-zinc-100">
+      <div className="min-h-screen bg-base text-t-primary">
         <Sidebar
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
@@ -238,8 +265,8 @@ export default function AppShell({ children }: AppShellProps) {
           isOpen={activeInfoModal === "methodology"}
           onClose={() => setActiveInfoModal(null)}
         />
-        <div className="mx-auto flex max-w-7xl gap-3 px-3 py-3 sm:px-4">
-          <div className="flex min-w-0 flex-1 flex-col gap-3">
+        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+          <div className="flex flex-col gap-6">
             <Topbar
               isFull={router.pathname === "/feed"}
               pageTitle={
@@ -250,6 +277,14 @@ export default function AppShell({ children }: AppShellProps) {
                     : router.pathname === "/settings"
                       ? "Settings"
                       : "Weekly Market Outlook"
+              }
+              weekLabel={
+                (router.pathname === "/feed" ||
+                  router.pathname === "/map" ||
+                  router.pathname === "/radar") &&
+                weekKeys.length > 0
+                  ? formatWeekLabel(weekKeys[Math.min(selectedWeekIndex, weekKeys.length - 1)] ?? weekKeys[0])
+                  : null
               }
               onOpenMenu={() => setIsSidebarOpen(true)}
             />

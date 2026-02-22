@@ -7,6 +7,7 @@ export interface StockEvent {
   risk_level: RiskLevel;
   confidence: number;
   rationale: string;
+  expected_date?: string | null;  // YYYY-MM-DD, when event is expected to occur
 }
 
 export interface StockAnalysis {

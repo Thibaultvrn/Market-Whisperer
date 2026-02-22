@@ -139,41 +139,35 @@ const legalNotice = {
   ] as LegalSection[]
 };
 
-export default function LegalNoticesModal({
-  isOpen,
-  onClose
-}: LegalNoticesModalProps) {
+export default function LegalNoticesModal({ isOpen, onClose }: LegalNoticesModalProps) {
   return (
-    <InfoOverlayModal
-      isOpen={isOpen}
-      onClose={onClose}
-      title={legalNotice.page.title}
-    >
-      <div className="space-y-1 text-xs text-zinc-600">
+    <InfoOverlayModal isOpen={isOpen} onClose={onClose} title={legalNotice.page.title}>
+      <div className="space-y-1 text-xs text-t-tertiary">
         <p>
-          <span className="font-medium text-zinc-700">Product:</span> {legalNotice.page.product}
+          <span className="font-medium text-t-secondary">Product:</span>{" "}
+          {legalNotice.page.product}
         </p>
         <p>
-          <span className="font-medium text-zinc-700">Last updated:</span>{" "}
+          <span className="font-medium text-t-secondary">Last updated:</span>{" "}
           {legalNotice.page.last_updated}
         </p>
         <p>
-          <span className="font-medium text-zinc-700">Jurisdiction:</span>{" "}
+          <span className="font-medium text-t-secondary">Jurisdiction:</span>{" "}
           {legalNotice.page.jurisdiction.country} ({legalNotice.page.jurisdiction.region})
         </p>
       </div>
 
       {legalNotice.sections.map((section) => (
         <section key={section.id} className="space-y-2">
-          <h3 className="text-base font-semibold text-zinc-900">{section.title}</h3>
+          <h3 className="text-lg font-medium text-t-primary">{section.title}</h3>
           {section.content.map((paragraph) => (
-            <p key={`${section.id}-${paragraph}`} className="text-sm text-zinc-800">
+            <p key={`${section.id}-${paragraph}`} className="text-sm text-t-secondary">
               {paragraph}
             </p>
           ))}
 
           {section.list ? (
-            <ul className="list-disc space-y-1 pl-5 text-sm text-zinc-800">
+            <ul className="list-disc space-y-1 pl-5 text-sm text-t-secondary">
               {section.list.map((item) => (
                 <li key={`${section.id}-${item}`}>{item}</li>
               ))}
@@ -183,7 +177,7 @@ export default function LegalNoticesModal({
           {section.footer ? (
             <div className="space-y-1.5">
               {section.footer.map((line) => (
-                <p key={`${section.id}-footer-${line}`} className="text-sm text-zinc-800">
+                <p key={`${section.id}-footer-${line}`} className="text-sm text-t-secondary">
                   {line}
                 </p>
               ))}

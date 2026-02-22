@@ -62,22 +62,22 @@ export default function TickerSelector({ value, onChange }: TickerSelectorProps)
 
   return (
     <div className="relative" ref={containerRef}>
-      <label className="mb-2 block text-sm font-medium text-zinc-200">Favorite Tickers</label>
-      <div className="rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3">
+      <label className="mb-3 block text-sm font-medium text-t-primary">Favorite Tickers</label>
+      <div className="rounded-inner border border-border-subtle bg-elevated/50 p-6">
         <div className="mb-3 flex flex-wrap gap-2">
           {value.length === 0 ? (
-            <span className="text-sm text-zinc-500">No favorite tickers yet.</span>
+            <span className="text-sm text-t-tertiary">No favorite tickers yet.</span>
           ) : (
             value.map((symbol) => (
               <span
                 key={symbol}
-                className="inline-flex items-center gap-2 rounded-full border border-zinc-700/70 bg-zinc-900 px-3 py-1 text-xs text-zinc-100"
+                className="inline-flex items-center gap-2 rounded-inner border border-border-subtle bg-surface px-3 py-1.5 text-xs font-medium text-t-primary"
               >
                 {symbol}
                 <button
                   type="button"
                   onClick={() => removeTicker(symbol)}
-                  className="text-zinc-400 transition-colors hover:text-zinc-200"
+                  className="text-t-tertiary transition-colors hover:text-t-primary"
                 >
                   ×
                 </button>
@@ -94,27 +94,27 @@ export default function TickerSelector({ value, onChange }: TickerSelectorProps)
           }}
           onFocus={() => setIsOpen(true)}
           placeholder="Search by symbol or company..."
-          className="w-full rounded-lg border border-zinc-800/70 bg-zinc-950/80 px-3 py-2 text-sm text-zinc-100 outline-none transition-colors focus:border-cyan-500/80"
+          className="w-full rounded-inner border border-border-subtle bg-base px-3 py-2.5 text-sm text-t-primary outline-none transition-colors focus:border-accent"
         />
       </div>
 
-      {error ? <p className="mt-2 text-xs text-red-300">{error}</p> : null}
+      {error ? <p className="mt-2 text-xs text-risk-high">{error}</p> : null}
 
       {isOpen && suggestions.length > 0 ? (
-        <div className="absolute z-30 mt-2 max-h-64 w-full overflow-y-auto rounded-xl border border-zinc-800/70 bg-zinc-900">
+        <div className="absolute z-30 mt-2 max-h-64 w-full overflow-y-auto rounded-card border border-border-subtle bg-surface shadow-elevated">
           {suggestions.map((ticker) => (
             <div
               key={`${ticker.symbol}-${ticker.exchange ?? "x"}`}
-              className="flex items-center justify-between border-b border-zinc-800/70 px-3 py-2 text-sm last:border-b-0 hover:bg-zinc-800/70"
+              className="flex items-center justify-between border-b border-border-subtle px-4 py-2.5 text-sm last:border-b-0 hover:bg-elevated"
             >
               <div className="min-w-0">
-                <p className="font-medium text-zinc-200">{ticker.symbol}</p>
-                <p className="truncate text-xs text-zinc-400">{ticker.name}</p>
+                <p className="font-medium text-t-primary">{ticker.symbol}</p>
+                <p className="truncate text-xs text-t-tertiary">{ticker.name}</p>
               </div>
               <button
                 type="button"
                 onClick={() => addTicker(ticker.symbol)}
-                className="rounded-full border border-zinc-700 p-1 text-zinc-300 transition-colors hover:bg-zinc-700"
+                className="rounded-inner border border-border-subtle p-1.5 text-t-tertiary transition-colors hover:bg-elevated hover:text-t-primary"
                 aria-label={`Add ${ticker.symbol} to favorites`}
               >
                 <Heart size={13} />

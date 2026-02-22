@@ -47,6 +47,7 @@ class StockEventOut(BaseModel):
     risk_level: str
     confidence: float
     rationale: str
+    expected_date: str | None = None  # YYYY-MM-DD, when event is expected to occur
 
 
 class StockAnalysisOut(BaseModel):
@@ -127,6 +128,7 @@ async def analyze(request: AnalyzeRequest):
                     risk_level=output.risk_level.lower(),
                     confidence=output.confidence,
                     rationale=output.rationale,
+                    expected_date=event.expected_date,
                 )
                 for event, output in entries
             ]

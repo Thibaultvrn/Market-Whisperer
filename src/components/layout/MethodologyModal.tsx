@@ -182,17 +182,11 @@ interface MethodologyModalProps {
   onClose: () => void;
 }
 
-function FormulaBlock({
-  latex,
-  label
-}: {
-  latex: string;
-  label?: string;
-}) {
+function FormulaBlock({ latex, label }: { latex: string; label?: string }) {
   return (
-    <div className="overflow-x-auto rounded-md border border-zinc-200 bg-zinc-50 px-4 py-3 text-center">
+    <div className="overflow-x-auto rounded-inner border border-border-default bg-elevated px-4 py-3 text-center">
       {label ? (
-        <p className="mb-1 text-left text-[11px] font-medium uppercase tracking-wide text-zinc-500">
+        <p className="mb-1 text-left text-[11px] font-medium uppercase tracking-wide text-t-tertiary">
           {label}
         </p>
       ) : null}
@@ -201,100 +195,91 @@ function FormulaBlock({
   );
 }
 
-export default function MethodologyModal({
-  isOpen,
-  onClose
-}: MethodologyModalProps) {
+export default function MethodologyModal({ isOpen, onClose }: MethodologyModalProps) {
   return (
     <InfoOverlayModal isOpen={isOpen} onClose={onClose} title={methodology.name}>
-      {/* Header */}
-      <div className="space-y-1 text-xs text-zinc-600">
+      <div className="space-y-1 text-xs text-t-tertiary">
         <p>
-          <span className="font-medium text-zinc-700">Product:</span>{" "}
+          <span className="font-medium text-t-secondary">Product:</span>{" "}
           {methodology.product}
         </p>
         <p>
-          <span className="font-medium text-zinc-700">Version:</span>{" "}
+          <span className="font-medium text-t-secondary">Version:</span>{" "}
           {methodology.version}
         </p>
-        <p className="pt-1 text-sm text-zinc-700">{methodology.description}</p>
+        <p className="pt-1 text-sm text-t-secondary">{methodology.description}</p>
       </div>
 
-      {/* Notation */}
-      <section className="space-y-2">
-        <h3 className="text-base font-semibold text-zinc-900">Notation</h3>
+      <section className="space-y-3">
+        <h3 className="text-lg font-medium text-t-primary">Notation</h3>
         <div className="grid gap-2">
           {methodology.notation.map((n) => (
             <div key={n.symbol} className="flex items-baseline gap-3 text-sm">
               <span className="shrink-0">
                 <Tex math={n.symbol} />
               </span>
-              <span className="text-zinc-600">— {n.desc}</span>
+              <span className="text-t-tertiary">— {n.desc}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Pipeline */}
-      <section className="space-y-2">
-        <h3 className="text-base font-semibold text-zinc-900">
-          Processing Pipeline
-        </h3>
+      <section className="space-y-3">
+        <h3 className="text-lg font-medium text-t-primary">Processing Pipeline</h3>
         <div className="space-y-3">
           {methodology.pipeline.map((step) => (
             <div
               key={step.step_id}
-              className="space-y-2 rounded-lg border border-zinc-200 p-3"
+              className="space-y-2 rounded-inner border border-border-subtle bg-elevated/50 p-4"
             >
-              <h4 className="text-sm font-semibold text-zinc-900">
+              <h4 className="text-sm font-semibold text-t-primary">
                 Step {step.step_id} — {step.name}
               </h4>
               <FormulaBlock latex={step.latex} />
               {"condition" in step && step.condition ? (
-                <div className="rounded-md bg-amber-50 px-3 py-1.5 text-center">
+                <div className="rounded-inner bg-risk-medium-muted px-3 py-2 text-center">
                   <Tex math={step.condition} />
                 </div>
               ) : null}
               {"bounds" in step && step.bounds ? (
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-t-tertiary">
                   Bounds: <Tex math={step.bounds} />
                 </p>
               ) : null}
               {"post_processing" in step && step.post_processing ? (
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-t-tertiary">
                   Post-processing: <Tex math={step.post_processing} />
                 </p>
               ) : null}
-              <p className="text-sm text-zinc-700">{step.explanation}</p>
+              <p className="text-sm text-t-secondary">{step.explanation}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Diversification Metrics */}
-      <section className="space-y-2">
-        <h3 className="text-base font-semibold text-zinc-900">
+      <section className="space-y-3">
+        <h3 className="text-lg font-medium text-t-primary">
           Diversification & Diagnostics
         </h3>
         <div className="space-y-3">
           {methodology.diversification.metrics.map((m) => (
             <div
               key={m.name}
-              className="space-y-2 rounded-lg border border-zinc-200 p-3"
+              className="space-y-2 rounded-inner border border-border-subtle bg-elevated/50 p-4"
             >
-              <h4 className="text-sm font-semibold text-zinc-900">{m.name}</h4>
+              <h4 className="text-sm font-semibold text-t-primary">{m.name}</h4>
               <FormulaBlock latex={m.latex} />
-              <p className="text-sm text-zinc-700">{m.meaning}</p>
+              <p className="text-sm text-t-secondary">{m.meaning}</p>
             </div>
           ))}
         </div>
-        <div className="pt-2">
-          <p className="mb-1 text-xs font-medium text-zinc-700">
+        <div className="pt-1">
+          <p className="mb-1 text-xs font-medium text-t-secondary">
             Debug logging recommendations:
           </p>
           <ul className="space-y-0.5">
             {methodology.diversification.debug_logging.map((item) => (
-              <li key={item} className="text-xs text-zinc-600">
+              <li key={item} className="text-xs text-t-tertiary">
                 • {item}
               </li>
             ))}
@@ -302,61 +287,47 @@ export default function MethodologyModal({
         </div>
       </section>
 
-      {/* Numerical Rules */}
-      <section className="space-y-2">
-        <h3 className="text-base font-semibold text-zinc-900">
-          Numerical Rules
-        </h3>
+      <section className="space-y-3">
+        <h3 className="text-lg font-medium text-t-primary">Numerical Rules</h3>
         <ul className="space-y-1">
           {methodology.numerical_rules.map((rule) => (
-            <li key={rule} className="text-sm text-zinc-700">
+            <li key={rule} className="text-sm text-t-secondary">
               • {rule}
             </li>
           ))}
         </ul>
       </section>
 
-      {/* User-Facing Indicators */}
-      <section className="space-y-2">
-        <h3 className="text-base font-semibold text-zinc-900">
-          User-Facing Indicators
-        </h3>
+      <section className="space-y-3">
+        <h3 className="text-lg font-medium text-t-primary">User-Facing Indicators</h3>
         <div className="space-y-3">
           {methodology.user_indicators.map((ind) => (
             <div
               key={ind.name}
-              className="space-y-2 rounded-lg border border-zinc-200 p-3"
+              className="space-y-2 rounded-inner border border-border-subtle bg-elevated/50 p-4"
             >
-              <h4 className="text-sm font-semibold text-zinc-900">
-                {ind.name}
-              </h4>
+              <h4 className="text-sm font-semibold text-t-primary">{ind.name}</h4>
               <FormulaBlock latex={ind.latex} />
-              <p className="text-sm text-zinc-700">{ind.description}</p>
+              <p className="text-sm text-t-secondary">{ind.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Final Recommendations */}
-      <section className="space-y-2">
-        <h3 className="text-base font-semibold text-zinc-900">
-          Final Recommendations
-        </h3>
+      <section className="space-y-3">
+        <h3 className="text-lg font-medium text-t-primary">Final Recommendations</h3>
         <ul className="space-y-1">
           {methodology.final_recommendations.map((rec) => (
-            <li key={rec} className="text-sm text-zinc-700">
+            <li key={rec} className="text-sm text-t-secondary">
               • {rec}
             </li>
           ))}
         </ul>
       </section>
 
-      {/* Engine Parameters */}
-      <section className="space-y-2">
-        <h3 className="text-base font-semibold text-zinc-900">
-          Engine Parameters
-        </h3>
-        <div className="space-y-2 rounded-lg border border-zinc-200 p-3 text-sm text-zinc-700">
+      <section className="space-y-3">
+        <h3 className="text-lg font-medium text-t-primary">Engine Parameters</h3>
+        <div className="space-y-2 rounded-inner border border-border-subtle bg-elevated/50 p-4 text-sm text-t-secondary">
           <div className="flex justify-between">
             <span>Relevance threshold</span>
             <Tex math={`\\theta_{\\text{rel}} = ${methodology.parameters.relevance_threshold}`} />

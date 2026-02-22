@@ -1,5 +1,5 @@
 import GeoRiskMapView from "../src/components/map/GeoRiskMapView";
 
 export default function MapPage() {
-  return <GeoRiskMapView />;
+  return <GeoRiskMapView fullScreen />;
 }

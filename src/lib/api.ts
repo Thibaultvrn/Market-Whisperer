@@ -14,8 +14,9 @@ export async function analyzePortfolio(
   options?: AnalyzePortfolioOptions
 ): Promise<AnalyzeResponse> {
   if (options?.demoMode) {
-    const demoResponse = await fetch("/fixtures/analyze_response.json", {
-      signal: options.signal
+    const demoResponse = await fetch(`/fixtures/analyze_response.json?t=${Date.now()}`, {
+      signal: options.signal,
+      cache: "no-store"
     });
     if (!demoResponse.ok) {
       throw new Error("Demo fixture not available.");

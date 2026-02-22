@@ -1,0 +1,1714 @@
+{
+  "portfolio_risk_score": 0.55,
+  "portfolio_risk_level": "medium",
+  "stocks": [
+    {
+      "symbol": "AAPL",
+      "sector": "Technology",
+      "country": "US",
+      "total_risk_score": 1.0,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "US-China trade tensions over EV tariffs",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.81,
+          "rationale": "US-China trade tensions over EV tariffs impacts risk_aversion, creating negative pressure on AAPL. Confidence driven by multiple confirmations."
+        },
+        {
+          "title": "US labor market adds 180k jobs",
+          "event_type": "demand_shock",
+          "risk_score": 0.3,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market adds 180k jobs impacts global_growth_expectation, creating positive pressure on AAPL. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on AAPL. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China trade tensions worsen",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.81,
+          "rationale": "US-China trade tensions worsen impacts risk_aversion, creating negative pressure on AAPL. Confidence driven by multiple confirmations."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.5,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on AAPL. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on AAPL. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US carrier deployment",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "Taiwan Strait US carrier deployment impacts risk_aversion, creating negative pressure on AAPL. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.44,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on AAPL. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on AAPL. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.5,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on AAPL. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on AAPL. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US arms sale approved",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Taiwan Strait US arms sale approved impacts risk_aversion, creating negative pressure on AAPL. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "MSFT",
+      "sector": "Technology",
+      "country": "US",
+      "total_risk_score": 1.0,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "US-China trade tensions over EV tariffs",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.81,
+          "rationale": "US-China trade tensions over EV tariffs impacts risk_aversion, creating negative pressure on MSFT. Confidence driven by multiple confirmations."
+        },
+        {
+          "title": "US labor market adds 180k jobs",
+          "event_type": "demand_shock",
+          "risk_score": 0.3,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market adds 180k jobs impacts global_growth_expectation, creating positive pressure on MSFT. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on MSFT. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China trade tensions worsen",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.81,
+          "rationale": "US-China trade tensions worsen impacts risk_aversion, creating negative pressure on MSFT. Confidence driven by multiple confirmations."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.5,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on MSFT. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on MSFT. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US carrier deployment",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "Taiwan Strait US carrier deployment impacts risk_aversion, creating negative pressure on MSFT. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.44,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on MSFT. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on MSFT. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.5,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on MSFT. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on MSFT. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US arms sale approved",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Taiwan Strait US arms sale approved impacts risk_aversion, creating negative pressure on MSFT. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "NVDA",
+      "sector": "Technology",
+      "country": "US",
+      "total_risk_score": 1.0,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "US-China trade tensions over EV tariffs",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.81,
+          "rationale": "US-China trade tensions over EV tariffs impacts risk_aversion, creating negative pressure on NVDA. Confidence driven by multiple confirmations."
+        },
+        {
+          "title": "US labor market adds 180k jobs",
+          "event_type": "demand_shock",
+          "risk_score": 0.3,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market adds 180k jobs impacts global_growth_expectation, creating positive pressure on NVDA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on NVDA. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China trade tensions worsen",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.81,
+          "rationale": "US-China trade tensions worsen impacts risk_aversion, creating negative pressure on NVDA. Confidence driven by multiple confirmations."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.5,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on NVDA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on NVDA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US carrier deployment",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "Taiwan Strait US carrier deployment impacts risk_aversion, creating negative pressure on NVDA. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.44,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on NVDA. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on NVDA. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.5,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on NVDA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on NVDA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US arms sale approved",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Taiwan Strait US arms sale approved impacts risk_aversion, creating negative pressure on NVDA. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "TSM",
+      "sector": "Technology",
+      "country": "TW",
+      "total_risk_score": 1.0,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on TSM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Escalating tensions in Taiwan Strait",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "Escalating tensions in Taiwan Strait impacts risk_aversion, creating negative pressure on TSM. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.3,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on TSM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on TSM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US carrier deployment",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.44,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "Taiwan Strait US carrier deployment impacts risk_aversion, creating negative pressure on TSM. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on TSM. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.86,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on TSM. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.3,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on TSM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on TSM. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "ASML",
+      "sector": "Technology",
+      "country": "NL",
+      "total_risk_score": 0.98,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.43,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on ASML. Confidence driven by source reliability."
+        },
+        {
+          "title": "ECB raises rates by 25bps",
+          "event_type": "policy_monetary",
+          "risk_score": 0.36,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "ECB raises rates by 25bps impacts interest_rate_expectation, creating negative pressure on ASML. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.25,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on ASML. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.43,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on ASML. Confidence driven by source reliability."
+        },
+        {
+          "title": "ECB raises rates hawkish guidance",
+          "event_type": "policy_monetary",
+          "risk_score": 0.36,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "ECB raises rates hawkish guidance impacts interest_rate_expectation, creating negative pressure on ASML. Confidence driven by source reliability."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.34,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on ASML. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.25,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on ASML. Confidence driven by source reliability."
+        },
+        {
+          "title": "EU AI regulation first fines",
+          "event_type": "market_structure",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 0.9,
+          "rationale": "EU AI regulation first fines impacts regulatory_environment, creating negative pressure on ASML. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.43,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on ASML. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "SAP",
+      "sector": "Technology",
+      "country": "DE",
+      "total_risk_score": 0.98,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.43,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on SAP. Confidence driven by source reliability."
+        },
+        {
+          "title": "ECB raises rates by 25bps",
+          "event_type": "policy_monetary",
+          "risk_score": 0.36,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "ECB raises rates by 25bps impacts interest_rate_expectation, creating negative pressure on SAP. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.25,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on SAP. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.43,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on SAP. Confidence driven by source reliability."
+        },
+        {
+          "title": "ECB raises rates hawkish guidance",
+          "event_type": "policy_monetary",
+          "risk_score": 0.36,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "ECB raises rates hawkish guidance impacts interest_rate_expectation, creating negative pressure on SAP. Confidence driven by source reliability."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.34,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on SAP. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.25,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on SAP. Confidence driven by source reliability."
+        },
+        {
+          "title": "EU AI regulation first fines",
+          "event_type": "market_structure",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 0.9,
+          "rationale": "EU AI regulation first fines impacts regulatory_environment, creating negative pressure on SAP. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.43,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on SAP. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "JPM",
+      "sector": "Financials",
+      "country": "US",
+      "total_risk_score": 1.0,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "US-China trade tensions over EV tariffs",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 0.81,
+          "rationale": "US-China trade tensions over EV tariffs impacts risk_aversion, creating negative pressure on JPM. Confidence driven by multiple confirmations."
+        },
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.9,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on JPM. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China trade tensions worsen",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 0.81,
+          "rationale": "US-China trade tensions worsen impacts risk_aversion, creating negative pressure on JPM. Confidence driven by multiple confirmations."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on JPM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.9,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on JPM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US carrier deployment",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "Taiwan Strait US carrier deployment impacts risk_aversion, creating negative pressure on JPM. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.48,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on JPM. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.54,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on JPM. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on JPM. Confidence driven by source reliability."
+        },
+        {
+          "title": "EU AI regulation first fines",
+          "event_type": "market_structure",
+          "risk_score": 0.27,
+          "risk_level": "medium",
+          "confidence": 0.9,
+          "rationale": "EU AI regulation first fines impacts regulatory_environment, creating negative pressure on JPM. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.9,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on JPM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US arms sale approved",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Taiwan Strait US arms sale approved impacts risk_aversion, creating negative pressure on JPM. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "GS",
+      "sector": "Financials",
+      "country": "US",
+      "total_risk_score": 1.0,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "US-China trade tensions over EV tariffs",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 0.81,
+          "rationale": "US-China trade tensions over EV tariffs impacts risk_aversion, creating negative pressure on GS. Confidence driven by multiple confirmations."
+        },
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.9,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on GS. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China trade tensions worsen",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 0.81,
+          "rationale": "US-China trade tensions worsen impacts risk_aversion, creating negative pressure on GS. Confidence driven by multiple confirmations."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on GS. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.9,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on GS. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US carrier deployment",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "Taiwan Strait US carrier deployment impacts risk_aversion, creating negative pressure on GS. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.48,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on GS. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.54,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on GS. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on GS. Confidence driven by source reliability."
+        },
+        {
+          "title": "EU AI regulation first fines",
+          "event_type": "market_structure",
+          "risk_score": 0.27,
+          "risk_level": "medium",
+          "confidence": 0.9,
+          "rationale": "EU AI regulation first fines impacts regulatory_environment, creating negative pressure on GS. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.9,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on GS. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US arms sale approved",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Taiwan Strait US arms sale approved impacts risk_aversion, creating negative pressure on GS. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "HSBC",
+      "sector": "Financials",
+      "country": "GB",
+      "total_risk_score": 0.98,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.45,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on HSBC. Confidence driven by source reliability."
+        },
+        {
+          "title": "ECB raises rates by 25bps",
+          "event_type": "policy_monetary",
+          "risk_score": 0.38,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "ECB raises rates by 25bps impacts interest_rate_expectation, creating negative pressure on HSBC. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.45,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on HSBC. Confidence driven by source reliability."
+        },
+        {
+          "title": "ECB raises rates hawkish guidance",
+          "event_type": "policy_monetary",
+          "risk_score": 0.38,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "ECB raises rates hawkish guidance impacts interest_rate_expectation, creating negative pressure on HSBC. Confidence driven by source reliability."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.36,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on HSBC. Confidence driven by source reliability."
+        },
+        {
+          "title": "EU AI regulation first fines",
+          "event_type": "market_structure",
+          "risk_score": 0.54,
+          "risk_level": "medium",
+          "confidence": 0.9,
+          "rationale": "EU AI regulation first fines impacts regulatory_environment, creating negative pressure on HSBC. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.45,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on HSBC. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "XOM",
+      "sector": "Energy",
+      "country": "US",
+      "total_risk_score": 0.97,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "US labor market adds 180k jobs",
+          "event_type": "demand_shock",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market adds 180k jobs impacts global_growth_expectation, creating positive pressure on XOM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Semiconductor disruption at Korean fab",
+          "event_type": "supply_shock",
+          "risk_score": 0.28,
+          "risk_level": "medium",
+          "confidence": 0.56,
+          "rationale": "Semiconductor disruption at Korean fab impacts production_disruption, creating negative pressure on XOM. Confidence driven by directness of impact."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.48,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on XOM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Semiconductor supply chain disruption",
+          "event_type": "supply_shock",
+          "risk_score": 0.28,
+          "risk_level": "medium",
+          "confidence": 0.56,
+          "rationale": "Semiconductor supply chain disruption impacts production_disruption, creating negative pressure on XOM. Confidence driven by directness of impact."
+        },
+        {
+          "title": "OPEC+ Saudi cuts 1M bpd",
+          "event_type": "supply_shock",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "OPEC+ Saudi cuts 1M bpd impacts production_disruption, creating negative pressure on XOM. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on XOM. Confidence driven by directness of impact."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.48,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on XOM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Semiconductor Samsung fab fire",
+          "event_type": "supply_shock",
+          "risk_score": 0.4,
+          "risk_level": "medium",
+          "confidence": 0.69,
+          "rationale": "Semiconductor Samsung fab fire impacts production_disruption, creating negative pressure on XOM. Confidence driven by clarity of information."
+        }
+      ]
+    },
+    {
+      "symbol": "CVX",
+      "sector": "Energy",
+      "country": "US",
+      "total_risk_score": 0.97,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "US labor market adds 180k jobs",
+          "event_type": "demand_shock",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market adds 180k jobs impacts global_growth_expectation, creating positive pressure on CVX. Confidence driven by source reliability."
+        },
+        {
+          "title": "Semiconductor disruption at Korean fab",
+          "event_type": "supply_shock",
+          "risk_score": 0.28,
+          "risk_level": "medium",
+          "confidence": 0.56,
+          "rationale": "Semiconductor disruption at Korean fab impacts production_disruption, creating negative pressure on CVX. Confidence driven by directness of impact."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.48,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on CVX. Confidence driven by source reliability."
+        },
+        {
+          "title": "Semiconductor supply chain disruption",
+          "event_type": "supply_shock",
+          "risk_score": 0.28,
+          "risk_level": "medium",
+          "confidence": 0.56,
+          "rationale": "Semiconductor supply chain disruption impacts production_disruption, creating negative pressure on CVX. Confidence driven by directness of impact."
+        },
+        {
+          "title": "OPEC+ Saudi cuts 1M bpd",
+          "event_type": "supply_shock",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "OPEC+ Saudi cuts 1M bpd impacts production_disruption, creating negative pressure on CVX. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on CVX. Confidence driven by directness of impact."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.48,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on CVX. Confidence driven by source reliability."
+        },
+        {
+          "title": "Semiconductor Samsung fab fire",
+          "event_type": "supply_shock",
+          "risk_score": 0.4,
+          "risk_level": "medium",
+          "confidence": 0.69,
+          "rationale": "Semiconductor Samsung fab fire impacts production_disruption, creating negative pressure on CVX. Confidence driven by clarity of information."
+        }
+      ]
+    },
+    {
+      "symbol": "BP",
+      "sector": "Energy",
+      "country": "GB",
+      "total_risk_score": 0.9,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "European energy prices spike",
+          "event_type": "supply_shock",
+          "risk_score": 0.47,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "European energy prices spike impacts production_disruption, creating negative pressure on BP. Confidence driven by source reliability."
+        },
+        {
+          "title": "European energy crisis deepens",
+          "event_type": "supply_shock",
+          "risk_score": 0.4,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "European energy crisis deepens impacts production_disruption, creating negative pressure on BP. Confidence driven by source reliability."
+        },
+        {
+          "title": "OPEC+ Saudi cuts 1M bpd",
+          "event_type": "supply_shock",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "OPEC+ Saudi cuts 1M bpd impacts production_disruption, creating negative pressure on BP. Confidence driven by source reliability."
+        },
+        {
+          "title": "European energy rationing considered",
+          "event_type": "supply_shock",
+          "risk_score": 0.4,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "European energy rationing considered impacts production_disruption, creating negative pressure on BP. Confidence driven by source reliability."
+        },
+        {
+          "title": "Semiconductor Samsung fab fire",
+          "event_type": "supply_shock",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.69,
+          "rationale": "Semiconductor Samsung fab fire impacts production_disruption, creating negative pressure on BP. Confidence driven by clarity of information."
+        }
+      ]
+    },
+    {
+      "symbol": "SHEL",
+      "sector": "Energy",
+      "country": "GB",
+      "total_risk_score": 0.9,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "European energy prices spike",
+          "event_type": "supply_shock",
+          "risk_score": 0.47,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "European energy prices spike impacts production_disruption, creating negative pressure on SHEL. Confidence driven by source reliability."
+        },
+        {
+          "title": "European energy crisis deepens",
+          "event_type": "supply_shock",
+          "risk_score": 0.4,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "European energy crisis deepens impacts production_disruption, creating negative pressure on SHEL. Confidence driven by source reliability."
+        },
+        {
+          "title": "OPEC+ Saudi cuts 1M bpd",
+          "event_type": "supply_shock",
+          "risk_score": 0.29,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "OPEC+ Saudi cuts 1M bpd impacts production_disruption, creating negative pressure on SHEL. Confidence driven by source reliability."
+        },
+        {
+          "title": "European energy rationing considered",
+          "event_type": "supply_shock",
+          "risk_score": 0.4,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "European energy rationing considered impacts production_disruption, creating negative pressure on SHEL. Confidence driven by source reliability."
+        },
+        {
+          "title": "Semiconductor Samsung fab fire",
+          "event_type": "supply_shock",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.69,
+          "rationale": "Semiconductor Samsung fab fire impacts production_disruption, creating negative pressure on SHEL. Confidence driven by clarity of information."
+        }
+      ]
+    },
+    {
+      "symbol": "AMZN",
+      "sector": "Consumer Discretionary",
+      "country": "US",
+      "total_risk_score": 1.0,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "US labor market adds 180k jobs",
+          "event_type": "demand_shock",
+          "risk_score": 0.36,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market adds 180k jobs impacts global_growth_expectation, creating positive pressure on AMZN. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on AMZN. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.6,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on AMZN. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on AMZN. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.39,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on AMZN. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.31,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on AMZN. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.6,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on AMZN. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on AMZN. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "TSLA",
+      "sector": "Consumer Discretionary",
+      "country": "US",
+      "total_risk_score": 1.0,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "US labor market adds 180k jobs",
+          "event_type": "demand_shock",
+          "risk_score": 0.36,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market adds 180k jobs impacts global_growth_expectation, creating positive pressure on TSLA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on TSLA. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.6,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on TSLA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on TSLA. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.39,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on TSLA. Confidence driven by directness of impact."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.31,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on TSLA. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.6,
+          "risk_level": "high",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on TSLA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on TSLA. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "BABA",
+      "sector": "Consumer Discretionary",
+      "country": "CN",
+      "total_risk_score": 0.96,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.31,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on BABA. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.36,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on BABA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.31,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on BABA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US carrier deployment",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.39,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "Taiwan Strait US carrier deployment impacts risk_aversion, creating negative pressure on BABA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on BABA. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.36,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on BABA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.31,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on BABA. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "TM",
+      "sector": "Consumer Discretionary",
+      "country": "JP",
+      "total_risk_score": 0.96,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.31,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on TM. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.36,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on TM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.31,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on TM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Taiwan Strait US carrier deployment",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.39,
+          "risk_level": "medium",
+          "confidence": 0.74,
+          "rationale": "Taiwan Strait US carrier deployment impacts risk_aversion, creating negative pressure on TM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.52,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on TM. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.36,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on TM. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.31,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on TM. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "JNJ",
+      "sector": "Healthcare",
+      "country": "US",
+      "total_risk_score": 0.33,
+      "total_risk_level": "medium",
+      "events": [
+        {
+          "title": "EU AI regulation first fines",
+          "event_type": "market_structure",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 0.9,
+          "rationale": "EU AI regulation first fines impacts regulatory_environment, creating negative pressure on JNJ. Confidence driven by directness of impact."
+        }
+      ]
+    },
+    {
+      "symbol": "UNH",
+      "sector": "Healthcare",
+      "country": "US",
+      "total_risk_score": 0.33,
+      "total_risk_level": "medium",
+      "events": [
+        {
+          "title": "EU AI regulation first fines",
+          "event_type": "market_structure",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 0.9,
+          "rationale": "EU AI regulation first fines impacts regulatory_environment, creating negative pressure on UNH. Confidence driven by directness of impact."
+        }
+      ]
+    },
+    {
+      "symbol": "NVO",
+      "sector": "Healthcare",
+      "country": "DK",
+      "total_risk_score": 0.26,
+      "total_risk_level": "medium",
+      "events": [
+        {
+          "title": "EU AI regulation first fines",
+          "event_type": "market_structure",
+          "risk_score": 0.26,
+          "risk_level": "medium",
+          "confidence": 0.9,
+          "rationale": "EU AI regulation first fines impacts regulatory_environment, creating negative pressure on NVO. Confidence driven by directness of impact."
+        }
+      ]
+    },
+    {
+      "symbol": "BA",
+      "sector": "Industrials",
+      "country": "US",
+      "total_risk_score": 0.98,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "US labor market adds 180k jobs",
+          "event_type": "demand_shock",
+          "risk_score": 0.34,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market adds 180k jobs impacts global_growth_expectation, creating positive pressure on BA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on BA. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.57,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on BA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on BA. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.27,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on BA. Confidence driven by directness of impact."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.57,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on BA. Confidence driven by source reliability."
+        },
+        {
+          "title": "Semiconductor Samsung fab fire",
+          "event_type": "supply_shock",
+          "risk_score": 0.34,
+          "risk_level": "medium",
+          "confidence": 0.69,
+          "rationale": "Semiconductor Samsung fab fire impacts production_disruption, creating negative pressure on BA. Confidence driven by clarity of information."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on BA. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "RTX",
+      "sector": "Industrials",
+      "country": "US",
+      "total_risk_score": 0.98,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "US labor market adds 180k jobs",
+          "event_type": "demand_shock",
+          "risk_score": 0.34,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market adds 180k jobs impacts global_growth_expectation, creating positive pressure on RTX. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on RTX. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.57,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on RTX. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on RTX. Confidence driven by source reliability."
+        },
+        {
+          "title": "US-China new tariffs announced",
+          "event_type": "geopolitical_tension",
+          "risk_score": 0.27,
+          "risk_level": "medium",
+          "confidence": 0.93,
+          "rationale": "US-China new tariffs announced impacts risk_aversion, creating negative pressure on RTX. Confidence driven by directness of impact."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.57,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on RTX. Confidence driven by source reliability."
+        },
+        {
+          "title": "Semiconductor Samsung fab fire",
+          "event_type": "supply_shock",
+          "risk_score": 0.34,
+          "risk_level": "medium",
+          "confidence": 0.69,
+          "rationale": "Semiconductor Samsung fab fire impacts production_disruption, creating negative pressure on RTX. Confidence driven by clarity of information."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on RTX. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "BHP",
+      "sector": "Materials",
+      "country": "AU",
+      "total_risk_score": 0.34,
+      "total_risk_level": "medium",
+      "events": [
+        {
+          "title": "OPEC+ Saudi cuts 1M bpd",
+          "event_type": "supply_shock",
+          "risk_score": 0.34,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "OPEC+ Saudi cuts 1M bpd impacts production_disruption, creating negative pressure on BHP. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "NEE",
+      "sector": "Utilities",
+      "country": "US",
+      "total_risk_score": 0.94,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.56,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on NEE. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.56,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on NEE. Confidence driven by source reliability."
+        },
+        {
+          "title": "Japan BOJ first rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.34,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Japan BOJ first rate hike impacts interest_rate_expectation, creating negative pressure on NEE. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.56,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on NEE. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "GOOGL",
+      "sector": "Communication Services",
+      "country": "US",
+      "total_risk_score": 0.86,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on GOOGL. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.32,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on GOOGL. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on GOOGL. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.32,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on GOOGL. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on GOOGL. Confidence driven by source reliability."
+        }
+      ]
+    },
+    {
+      "symbol": "META",
+      "sector": "Communication Services",
+      "country": "US",
+      "total_risk_score": 0.86,
+      "total_risk_level": "high",
+      "events": [
+        {
+          "title": "Fed signals 50bps rate hike",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on META. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor market data surprise",
+          "event_type": "demand_shock",
+          "risk_score": 0.32,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor market data surprise impacts global_growth_expectation, creating positive pressure on META. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed signals 50bps hike for March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed signals 50bps hike for March impacts interest_rate_expectation, creating negative pressure on META. Confidence driven by source reliability."
+        },
+        {
+          "title": "US labor wage growth accelerates",
+          "event_type": "demand_shock",
+          "risk_score": 0.32,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "US labor wage growth accelerates impacts global_growth_expectation, creating positive pressure on META. Confidence driven by source reliability."
+        },
+        {
+          "title": "Fed 50bps hike confirmed March",
+          "event_type": "policy_monetary",
+          "risk_score": 0.33,
+          "risk_level": "medium",
+          "confidence": 1.0,
+          "rationale": "Fed 50bps hike confirmed March impacts interest_rate_expectation, creating negative pressure on META. Confidence driven by source reliability."
+        }
+      ]
+    }
+  ],
+  "event_count": 52,
+  "ticker_count": 26
+}

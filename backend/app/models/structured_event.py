@@ -22,6 +22,7 @@ from .enums import (
 class StructuredEvent(BaseModel):
     event_type: EventType
     variable_direction: VariableDirection
+    expected_date: str | None = None  # YYYY-MM-DD, when event is expected to occur
     magnitude: Magnitude
     immediacy: Immediacy
     surprise: Surprise

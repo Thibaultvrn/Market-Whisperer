@@ -10,22 +10,21 @@
       "total_risk_score": 0.91,
       "total_risk_level": "high",
       "events": [
-        {
-          "title": "Fed signals 50bps rate hike",
-          "event_type": "policy_monetary",
-          "risk_score": 0.86,
-          "risk_level": "high",
-          "confidence": 1.0,
-          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on AAPL. Confidence driven by source reliability."
-        },
-        {
-          "title": "Escalating tensions in Taiwan Strait",
-          "event_type": "geopolitical_tension",
-          "risk_score": 0.38,
-          "risk_level": "medium",
-          "confidence": 0.74,
-          "rationale": "Escalating tensions in Taiwan Strait impacts risk_aversion, creating negative pressure on AAPL. Confidence driven by source reliability."
-        }
+        {"title": "Fed signals 50bps rate hike", "event_type": "policy_monetary", "risk_score": 0.86, "risk_level": "high", "confidence": 1, "rationale": "Fed impacts interest rates."},
+        {"title": "Escalating tensions in Taiwan Strait", "event_type": "geopolitical_tension", "risk_score": 0.38, "risk_level": "medium", "confidence": 0.74, "rationale": "Taiwan Strait impacts risk aversion."},
+        {"title": "ECB raises rates by 25bps", "event_type": "policy_monetary", "risk_score": 0.35, "risk_level": "medium", "confidence": 0.9, "rationale": "ECB impacts European exposure."},
+        {"title": "UK inflation exceeds expectations", "event_type": "policy_monetary", "risk_score": 0.28, "risk_level": "medium", "confidence": 0.85, "rationale": "UK inflation impacts rates."},
+        {"title": "China property sector stress", "event_type": "demand_shock", "risk_score": 0.42, "risk_level": "medium", "confidence": 0.72, "rationale": "China stress impacts supply chain."},
+        {"title": "US-China trade tensions", "event_type": "geopolitical_tension", "risk_score": 0.55, "risk_level": "medium", "confidence": 0.8, "rationale": "Trade tensions impact tech."},
+        {"title": "Japan BOJ policy shift", "event_type": "policy_monetary", "risk_score": 0.32, "risk_level": "medium", "confidence": 0.78, "rationale": "BOJ impacts Asian markets."},
+        {"title": "European energy crisis", "event_type": "supply_shock", "risk_score": 0.4, "risk_level": "medium", "confidence": 0.75, "rationale": "Energy crisis impacts costs."},
+        {"title": "US labor market data surprise", "event_type": "demand_shock", "risk_score": 0.35, "risk_level": "medium", "confidence": 0.88, "rationale": "Labor data impacts Fed."},
+        {"title": "Global supply chain disruption", "event_type": "supply_shock", "risk_score": 0.48, "risk_level": "medium", "confidence": 0.7, "rationale": "Supply chain impacts production."},
+        {"title": "Fed pivot expectations", "event_type": "policy_monetary", "risk_score": 0.3, "risk_level": "medium", "confidence": 0.65, "rationale": "Fed pivot impacts rates."},
+        {"title": "Eurozone recession fears", "event_type": "demand_shock", "risk_score": 0.38, "risk_level": "medium", "confidence": 0.72, "rationale": "Recession fears impact demand."},
+        {"title": "Taiwan semiconductor risk", "event_type": "geopolitical_tension", "risk_score": 0.45, "risk_level": "medium", "confidence": 0.76, "rationale": "Taiwan semi impacts tech."},
+        {"title": "Semiconductor supply chain disruption", "event_type": "supply_shock", "risk_score": 0.52, "risk_level": "medium", "confidence": 0.68, "rationale": "Semi disruption impacts production."},
+        {"title": "EU passes AI regulation package", "event_type": "market_structure", "risk_score": 0.45, "risk_level": "medium", "confidence": 0.82, "rationale": "EU AI regulation impacts tech."}
       ]
     },
     {
@@ -34,14 +33,10 @@
       "total_risk_score": 0.58,
       "total_risk_level": "medium",
       "events": [
-        {
-          "title": "Fed signals 50bps rate hike",
-          "event_type": "policy_monetary",
-          "risk_score": 0.53,
-          "risk_level": "medium",
-          "confidence": 1.0,
-          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on TSLA. Confidence driven by source reliability."
-        }
+        {"title": "Fed signals 50bps rate hike", "event_type": "policy_monetary", "risk_score": 0.53, "risk_level": "medium", "confidence": 1, "rationale": "Fed impacts rates."},
+        {"title": "OPEC+ production cut", "event_type": "supply_shock", "risk_score": 0.55, "risk_level": "medium", "confidence": 0.9, "rationale": "OPEC impacts energy costs."},
+        {"title": "Russia-Ukraine conflict escalation", "event_type": "geopolitical_tension", "risk_score": 0.42, "risk_level": "medium", "confidence": 0.85, "rationale": "Conflict impacts energy."},
+        {"title": "Semiconductor supply chain disruption", "event_type": "supply_shock", "risk_score": 0.41, "risk_level": "medium", "confidence": 0.68, "rationale": "Semi impacts auto production."}
       ]
     },
     {
@@ -50,22 +45,12 @@
       "total_risk_score": 0.91,
       "total_risk_level": "high",
       "events": [
-        {
-          "title": "Fed signals 50bps rate hike",
-          "event_type": "policy_monetary",
-          "risk_score": 0.86,
-          "risk_level": "high",
-          "confidence": 1.0,
-          "rationale": "Fed signals 50bps rate hike impacts interest_rate_expectation, creating negative pressure on NVDA. Confidence driven by source reliability."
-        },
-        {
-          "title": "Escalating tensions in Taiwan Strait",
-          "event_type": "geopolitical_tension",
-          "risk_score": 0.38,
-          "risk_level": "medium",
-          "confidence": 0.74,
-          "rationale": "Escalating tensions in Taiwan Strait impacts risk_aversion, creating negative pressure on NVDA. Confidence driven by source reliability."
-        }
+        {"title": "Fed signals 50bps rate hike", "event_type": "policy_monetary", "risk_score": 0.86, "risk_level": "high", "confidence": 1, "rationale": "Fed impacts rates."},
+        {"title": "Escalating tensions in Taiwan Strait", "event_type": "geopolitical_tension", "risk_score": 0.38, "risk_level": "medium", "confidence": 0.74, "rationale": "Taiwan impacts semi."},
+        {"title": "US-China trade tensions", "event_type": "geopolitical_tension", "risk_score": 0.62, "risk_level": "high", "confidence": 0.8, "rationale": "Trade tensions impact chips."},
+        {"title": "Taiwan semiconductor risk", "event_type": "geopolitical_tension", "risk_score": 0.58, "risk_level": "medium", "confidence": 0.76, "rationale": "Taiwan semi critical for NVDA."},
+        {"title": "Semiconductor supply chain disruption", "event_type": "supply_shock", "risk_score": 0.72, "risk_level": "high", "confidence": 0.68, "rationale": "Semi disruption impacts NVDA."},
+        {"title": "EU passes AI regulation package", "event_type": "market_structure", "risk_score": 0.55, "risk_level": "medium", "confidence": 0.82, "rationale": "EU AI regulation impacts NVDA."}
       ]
     }
   ]

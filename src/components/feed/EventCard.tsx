@@ -1,114 +1,110 @@
 import type { RiskLevel, StockAnalysis } from "../../lib/types";
+import RiskBadge from "../ui/RiskBadge";
+import SectionCard from "../ui/SectionCard";
 
 interface StockCardProps {
   stock: StockAnalysis;
 }
 
-const levelColors: Record<RiskLevel, { bar: string; badge: string; text: string }> = {
-  high: {
-    bar: "bg-red-500",
-    badge: "border-red-500/40 bg-red-500/15 text-red-300",
-    text: "text-red-300"
-  },
-  medium: {
-    bar: "bg-amber-500",
-    badge: "border-amber-500/40 bg-amber-500/15 text-amber-300",
-    text: "text-amber-300"
-  },
-  low: {
-    bar: "bg-green-500",
-    badge: "border-green-500/40 bg-green-500/15 text-green-300",
-    text: "text-green-300"
-  }
+const barColor: Record<RiskLevel, string> = {
+  high: "bg-risk-high",
+  medium: "bg-risk-medium",
+  low: "bg-risk-low"
+};
+
+const scoreColor: Record<RiskLevel, string> = {
+  high: "text-risk-high",
+  medium: "text-risk-medium",
+  low: "text-risk-low"
 };
 
 export default function StockCard({ stock }: StockCardProps) {
-  const totalColors = levelColors[stock.total_risk_level];
   const isHighRisk = stock.total_risk_level === "high";
 
   return (
-    <article
-      className={`rounded-xl border bg-zinc-900/30 ${
-        isHighRisk
-          ? "border-red-500/30 ring-1 ring-red-500/20"
-          : "border-zinc-800/60"
-      }`}
+    <SectionCard
+      noPadding
+      className={isHighRisk ? "border-risk-high/20" : undefined}
     >
-      <div className="flex items-center justify-between gap-3 border-b border-zinc-800/50 px-4 py-3">
+      <div className="flex items-center justify-between gap-3 border-b border-border-subtle px-6 py-5">
         <div className="flex items-baseline gap-2">
-          <h3 className="text-base font-bold text-zinc-100">{stock.symbol}</h3>
-          <span className="text-xs text-zinc-500">{stock.sector}</span>
+          <h3 className="text-lg font-semibold text-t-primary">{stock.symbol}</h3>
+          <span className="text-sm text-t-tertiary">{stock.sector}</span>
         </div>
-        <div className="flex items-center gap-2">
-          <span className={`text-lg font-bold tabular-nums ${totalColors.text}`}>
+        <div className="flex items-center gap-3">
+          <span className={`text-xl font-semibold tabular-nums ${scoreColor[stock.total_risk_level]}`}>
             {stock.total_risk_score.toFixed(2)}
           </span>
-          <span
-            className={`rounded-full border px-2 py-0.5 text-[11px] font-medium uppercase ${totalColors.badge}`}
-          >
-            {stock.total_risk_level}
-          </span>
+          <RiskBadge level={stock.total_risk_level}>{stock.total_risk_level}</RiskBadge>
         </div>
       </div>
 
-      <div className="divide-y divide-zinc-800/40">
+      <div className="divide-y divide-border-subtle">
         {stock.events.map((event) => {
-          const evtColors = levelColors[event.risk_level];
           const riskPct = Math.round(event.risk_score * 100);
           const confPct = Math.round(event.confidence * 100);
 
           return (
-            <div key={`${stock.symbol}-${event.title}`} className="px-4 py-3">
-              <div className="mb-1.5 flex items-start justify-between gap-3">
+            <div key={`${stock.symbol}-${event.title}`} className="px-6 py-5">
+              <div className="mb-2 flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-sm font-medium text-zinc-200">{event.title}</p>
-                  <p className="text-[11px] uppercase tracking-wide text-zinc-500">
-                    {event.event_type.replaceAll("_", " ")}
-                  </p>
+                  <p className="text-sm font-medium text-t-primary">{event.title}</p>
+                  <div className="mt-0.5 flex items-center gap-2">
+                    <p className="text-[11px] uppercase tracking-wide text-t-tertiary">
+                      {event.event_type.replaceAll("_", " ")}
+                    </p>
+                    {event.expected_date && (
+                      <span className="text-[11px] text-t-tertiary">
+                        · {new Date(event.expected_date + "T12:00:00Z").toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric"
+                        })}
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <span
-                  className={`shrink-0 rounded-full border px-2 py-0.5 text-[11px] font-medium uppercase ${evtColors.badge}`}
-                >
+                <RiskBadge level={event.risk_level} size="sm">
                   {event.risk_level}
-                </span>
+                </RiskBadge>
               </div>
 
-              <div className="mb-1 flex items-center gap-3">
+              <div className="mb-2 flex items-center gap-4">
                 <div className="flex-1">
-                  <div className="mb-0.5 flex justify-between text-[11px] text-zinc-400">
+                  <div className="mb-1 flex justify-between text-[11px] text-t-tertiary">
                     <span>Risk</span>
-                    <span className={`font-medium tabular-nums ${evtColors.text}`}>
+                    <span className={`font-medium tabular-nums ${scoreColor[event.risk_level]}`}>
                       {event.risk_score.toFixed(2)}
                     </span>
                   </div>
-                  <div className="h-1 rounded-full bg-zinc-800">
+                  <div className="h-1.5 overflow-hidden rounded-full bg-elevated">
                     <div
-                      className={`h-full rounded-full ${evtColors.bar}`}
+                      className={`h-full rounded-full ${barColor[event.risk_level]}`}
                       style={{ width: `${riskPct}%` }}
                     />
                   </div>
                 </div>
-                <div className="w-20 shrink-0">
-                  <div className="mb-0.5 flex justify-between text-[11px] text-zinc-400">
+                <div className="w-24 shrink-0">
+                  <div className="mb-1 flex justify-between text-[11px] text-t-tertiary">
                     <span>Conf.</span>
                     <span className="tabular-nums">{confPct}%</span>
                   </div>
-                  <div className="h-1 rounded-full bg-zinc-800">
+                  <div className="h-1.5 overflow-hidden rounded-full bg-elevated">
                     <div
-                      className="h-full rounded-full bg-zinc-400"
+                      className="h-full rounded-full bg-t-tertiary"
                       style={{ width: `${confPct}%` }}
                     />
                   </div>
                 </div>
               </div>
 
-              <p className="mt-1.5 text-xs leading-relaxed text-zinc-400">
+              <p className="text-xs leading-relaxed text-t-tertiary">
                 {event.rationale}
               </p>
             </div>
           );
         })}
       </div>
-    </article>
+    </SectionCard>
   );
 }
